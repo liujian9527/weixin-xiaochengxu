@@ -1,0 +1,15 @@
+<import src="post-item/post-item-template.wxml" />
+<view>
+  <swiper indicator-dots="true" interval="5000" autoplay="true">
+    <block wx:for="{{post_key}}" wx:for-item="item" wx:for-index="idx">
+      <swiper-item wx:if="{{3<=idx && idx<=5}}">
+        <image catchtap="onSwiperItemTap" data-postId="{{idx}}" src="{{item.imgSrc}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <block wx:for="{{post_key}}" wx:for-item="item" wx:for-index="idx">
+    <view catchtap="onPostTap" data-postId="{{item.postId}}">
+      <template is="postItem" data="{{...item}}" />
+    </view>
+  </block>
+</view>
